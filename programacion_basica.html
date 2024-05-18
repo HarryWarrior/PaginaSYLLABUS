@@ -8,29 +8,32 @@
 </head>
 <body>
     <header>
-        <h1>Nombre de la Universidad</h1>
+        <h1>Universidad Distrital Francisco Jose de Caldas</h1>
+        <h2>Programa de Ingeniería Electrónica</h2>
         <h2>Programación Básica</h2>
     </header>
+    <aside class="menu-vertical">
+        <ul class="menu-horizontal">
+            <li><a href="#ejercicio1">Ejercicio 1</a></li>
+            <li><a href="#ejercicio2">Ejercicio 2</a></li>
+            <li><a href="#ejercicio3">Ejercicio 3</a></li>
+            <li><a href="#ejercicio4">Ejercicio 3</a></li>
+            <li><a href="#ejercicio5">Ejercicio 3</a></li>
+            <!-- Añade más elementos según sea necesario -->
+        </ul>
+    </aside>
     <main>
-        <div class="content-wrapper">
-            <div class="menu">
-                <h3>Seleccione un ejercicio:</h3>
-                <ul>
-                    <li><a href="#" onclick="cargarEjercicio('ruta_del_ejercicio1.html')">Ejercicio 1</a></li>
-                    <li><a href="#" onclick="cargarEjercicio('ruta_del_ejercicio2.html')">Ejercicio 2</a></li>
-                    <li><a href="#" onclick="cargarEjercicio('ruta_del_ejercicio3.html')">Ejercicio 3</a></li>
-                    <!-- Agrega más ejercicios según sea necesario -->
-                </ul>
-            </div>
-            <div class="exercise-display">
-                <iframe id="h5pContent" src="" frameborder="0"></iframe>
-                <form id="opinionForm" onsubmit="enviarOpinion(event)">
+        <div class="content-wrapper" id="exerciseDisplay">
+            <div class="exercise-container"  id="ejercicio1">
+                <h2>Juego Interactivo para aprender CSS</h2>
+                <iframe src="https://aulasvirtuales.udistrital.edu.co/mod/hvp/embed.php?id=432127" width="1000" height="1114" frameborder="0" allowfullscreen="allowfullscreen" title="Juego Interactivo para aprender CSS"></iframe>
+                <form onsubmit="enviarOpinion(event)">
                     <h2>Opinión del Profesor</h2>
-                    <label for="opinion">¿Debería guardarse este ejercicio en el repositorio para los estudiantes?</label>
-                    <textarea id="opinion" name="opinion" placeholder="Escriba su opinión aquí..."></textarea>
+                    <label for="opinion1">¿Debería guardarse este ejercicio en el repositorio para los estudiantes?</label>
+                    <textarea id="opinion1" name="opinion" placeholder="Escriba su opinión aquí..."></textarea>
                     <br>
-                    <label for="guardar">¿Recomienda guardar este ejercicio? (Sí/No)</label>
-                    <select id="guardar" name="guardar">
+                    <label for="guardar1">¿Recomienda guardar este ejercicio? (Sí/No)</label>
+                    <select id="guardar1" name="guardar">
                         <option value="si">Sí</option>
                         <option value="no">No</option>
                     </select>
@@ -38,6 +41,79 @@
                     <button type="submit">Enviar Opinión</button>
                 </form>
             </div>
+
+            <div class="exercise-container" id="ejercicio2" >
+                <h2>Ejercicio practico en JAVA</h2>
+                <iframe src="https://aulasvirtuales.udistrital.edu.co/mod/hvp/embed.php?id=429821" width="1000" height="1142" frameborder="0" allowfullscreen="allowfullscreen" title="Ejercicio practico en JAVA"></iframe>
+                <form onsubmit="enviarOpinion(event)">
+                    <h2>Opinión del Profesor</h2>
+                    <label for="opinion2">¿Debería guardarse este ejercicio en el repositorio para los estudiantes?</label>
+                    <textarea id="opinion2" name="opinion" placeholder="Escriba su opinión aquí..."></textarea>
+                    <br>
+                    <label for="guardar2">¿Recomienda guardar este ejercicio? (Sí/No)</label>
+                    <select id="guardar2" name="guardar">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                    <br>
+                    <button type="submit">Enviar Opinión</button>
+                </form>
+            </div>
+
+            <div class="exercise-container"  id="ejercicio3">
+                <h2>Uso de Java y MySQL</h2>
+                <iframe src="https://aulasvirtuales.udistrital.edu.co/mod/hvp/embed.php?id=426092" width="1000" height="255" frameborder="0" allowfullscreen="allowfullscreen" title="Uso de Java y MySQL"></iframe>
+                <form onsubmit="enviarOpinion(event)">
+                    <h2>Opinión del Profesor</h2>
+                    <label for="opinion3">¿Debería guardarse este ejercicio en el repositorio para los estudiantes?</label>
+                    <textarea id="opinion3" name="opinion" placeholder="Escriba su opinión aquí..."></textarea>
+                    <br>
+                    <label for="guardar3">¿Recomienda guardar este ejercicio? (Sí/No)</label>
+                    <select id="guardar3" name="guardar">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                    <br>
+                    <button type="submit">Enviar Opinión</button>
+                </form>
+            </div>
+            <div class="exercise-container"  id="ejercicio4">
+                <h2>Ejercicio con preguntas guía - Determinar si una palabra es palíndromo usando JavaScripts</h2>
+                <iframe src="https://aulasvirtuales.udistrital.edu.co/mod/hvp/embed.php?id=360895" width="1000" height="297" frameborder="0" allowfullscreen="allowfullscreen" title="Ejercicio con preguntas guía - Determinar si una palabra es palíndromo usando JavaScript"></iframe>
+                <form onsubmit="enviarOpinion(event)">
+                    <h2>Opinión del Profesor</h2>
+                    <label for="opinion3">¿Debería guardarse este ejercicio en el repositorio para los estudiantes?</label>
+                    <textarea id="opinion3" name="opinion" placeholder="Escriba su opinión aquí..."></textarea>
+                    <br>
+                    <label for="guardar3">¿Recomienda guardar este ejercicio? (Sí/No)</label>
+                    <select id="guardar3" name="guardar">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                    <br>
+                    <button type="submit">Enviar Opinión</button>
+                </form>
+            </div>
+            
+            <div class="exercise-container"  id="ejercicio5">
+                <h2>Juego Interactivo para aprender CSS 2</h2>
+                <iframe src="https://aulasvirtuales.udistrital.edu.co/mod/hvp/embed.php?id=432150" width="1001" height="1026" frameborder="0" allowfullscreen="allowfullscreen" title="Juego Interactivo para aprender CSS 2"></iframe>  
+                <form onsubmit="enviarOpinion(event)">
+                    <h2>Opinión del Profesor</h2>
+                    <label for="opinion3">¿Debería guardarse este ejercicio en el repositorio para los estudiantes?</label>
+                    <textarea id="opinion3" name="opinion" placeholder="Escriba su opinión aquí..."></textarea>
+                    <br>
+                    <label for="guardar3">¿Recomienda guardar este ejercicio? (Sí/No)</label>
+                    <select id="guardar3" name="guardar">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                    <br>
+                    <button type="submit">Enviar Opinión</button>
+                </form>
+            </div>
+
+            <!-- Agrega más conjuntos de ejercicios y formularios según sea necesario -->
         </div>
     </main>
     <script src="scripts.js"></script>

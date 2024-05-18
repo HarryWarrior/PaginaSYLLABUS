@@ -1,17 +1,13 @@
-function cargarEjercicio(ruta) {
-    const iframe = document.getElementById('h5pContent');
-    iframe.src = ruta;
-}
-
 function enviarOpinion(event) {
     event.preventDefault();
-    const opinion = document.getElementById('opinion').value;
-    const guardar = document.getElementById('guardar').value;
+    const form = event.target;
+    const opinion = form.querySelector('textarea').value;
+    const guardar = form.querySelector('select').value;
     if (opinion.trim() === '' || guardar.trim() === '') {
         alert('Por favor, complete todos los campos antes de enviar.');
         return;
     }
     alert('Gracias por su opinión.');
-    document.getElementById('opinionForm').reset();
+    form.reset();
 }
 
