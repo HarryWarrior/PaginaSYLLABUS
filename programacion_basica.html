@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Básica - Evaluación de Ejercicios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Nombre de la Universidad</h1>
+        <h2>Programación Básica</h2>
+    </header>
+    <main>
+        <div class="content-wrapper">
+            <div class="menu">
+                <h3>Seleccione un ejercicio:</h3>
+                <ul>
+                    <li><a href="#" onclick="cargarEjercicio('ruta_del_ejercicio1.html')">Ejercicio 1</a></li>
+                    <li><a href="#" onclick="cargarEjercicio('ruta_del_ejercicio2.html')">Ejercicio 2</a></li>
+                    <li><a href="#" onclick="cargarEjercicio('ruta_del_ejercicio3.html')">Ejercicio 3</a></li>
+                    <!-- Agrega más ejercicios según sea necesario -->
+                </ul>
+            </div>
+            <div class="exercise-display">
+                <iframe id="h5pContent" src="" frameborder="0"></iframe>
+                <form id="opinionForm" onsubmit="enviarOpinion(event)">
+                    <h2>Opinión del Profesor</h2>
+                    <label for="opinion">¿Debería guardarse este ejercicio en el repositorio para los estudiantes?</label>
+                    <textarea id="opinion" name="opinion" placeholder="Escriba su opinión aquí..."></textarea>
+                    <br>
+                    <label for="guardar">¿Recomienda guardar este ejercicio? (Sí/No)</label>
+                    <select id="guardar" name="guardar">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                    <br>
+                    <button type="submit">Enviar Opinión</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
