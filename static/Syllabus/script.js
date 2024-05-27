@@ -3,7 +3,43 @@ let jsonData;
 let fileName = "";
 let input;
 let  jsonString;
+fetch('/programacion_basica/archivo.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data); // Verifica la estructura del JSON en la consola
+        jsonData = data;
+        for (let key in jsonData) {
+            if (jsonData.hasOwnProperty(key)) {
+                // Crear el contenedor div para cada par clave-valor
+                let pairDiv = document.createElement('div');
+                pairDiv.classList.add('jsonPair'); // Añadir clase al contenedor div
+                jsonEditorDiv.appendChild(pairDiv);
 
+                // Crear el elemento de etiqueta para la clave
+                let label = document.createElement('label');
+                label.textContent = key.charAt(0).toUpperCase() + key.slice(1) + ': '; // Convertir la clave en modo enunciado
+                pairDiv.appendChild(label);
+
+                // Crear el elemento de formulario para el valor
+                input = document.createElement('input');
+                input.type = 'text';
+                input.value = jsonData[key];
+                input.setAttribute('data-key', key); // Añadir un atributo de datos para almacenar la clave asociada
+                pairDiv.appendChild(input);
+            }
+        }reader.onerror = function (evt) {
+            console.error("Error al leer el archivo");
+        }
+        
+    })
+    .catch(error => {
+        console.error('Error al cargar el archivo JSON:', error);
+    });
 function handleFile() {
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];

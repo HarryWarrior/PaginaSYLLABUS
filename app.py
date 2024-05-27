@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file,render_template
+from flask import Flask, request, send_file,render_template, jsonify
 from openpyxl import load_workbook
 from openpyxl.drawing.image import Image
 import json
@@ -49,10 +49,19 @@ def index():
 def get_iframes():
     with open('iframes.json') as f:
         data = f.read()
-    return jsonify(data)
+    return data
+
 @app.route('/programacion_basica')
 def programacion_basica():
     return render_template('materias/programacion_basica.html')
+@app.route('/programacion_basica/syllabus')
+def programacion_basica_syllabus():
+    return render_template('materias/programacion_basica_syllabus.html')
+@app.route('/programacion_basica/archivo.json')
+def get_programacion_basica_jsonfile():
+    with open('static/jsonfiles/1_2_Programación_Basica.json', encoding='utf-8') as f:
+        data = f.read()
+    return data  
 @app.route('/syllabus')
 def syllabus():
     return render_template('Syllabus.html')
@@ -62,17 +71,14 @@ def generate_excel():
     json_data = json.loads(data['jsonData'])
     json_file_name = data['jsonFileName']
 
+    
     # Cargar el libro de Excel
     libro_excel = openpyxl.load_workbook('static/Syllabus/Formato.xlsx')
     hoja_excel = libro_excel.active
-    
-    for key, value in json_data.items():
-        if key.startswith('image_'):
-            # Si la clave comienza con 'image_', se trata de una celda con imagen
-            image_path = value  # Ruta de la imagen proporcionada en el JSON
-            image_cell = key.split('_')[1]  # Obtener la celda de la clave
-            img = Image(image_path)
-            hoja_excel.add_image(img, image_cell)
+    #img1 = Image('static/Syllabus/logo.jpg')
+    #img2 = Image('static/Syllabus/sigud.PNG')
+    #hoja_excel.add_image(img1, 'A1')  # Insertar la primera imagen en la celda A1
+    #hoja_excel.add_image(img2, 'G1 ')  # Insertar la segunda imagen en la celda D5
     # Actualizar las celdas en el archivo Excel con la información del JSON
     for clave, celda in claves_celdas.items():
         valor = json_data.get(clave, "")

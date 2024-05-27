@@ -1,7 +1,17 @@
 // Carga del archivo JSON y renderizado del contenido
-fetch('iframes.json')
-    .then(response => response.json())
+fetch('/iframes.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log(data); // Verifica la estructura del JSON en la consola
+        if (!data.programacion_basica) {
+            throw new Error('La clave "programacion_basica" no se encontró en el JSON');
+        }
+
         const menuList = document.getElementById('menu-list');
         const exerciseDisplay = document.getElementById('exerciseDisplay');
 
@@ -24,7 +34,9 @@ fetch('iframes.json')
             exerciseTitle.textContent = exercise.titulo;
             exerciseContainer.appendChild(exerciseTitle);
 
-            exerciseContainer.innerHTML += exercise.iframe;
+            const iframeWrapper = document.createElement('div');
+            iframeWrapper.innerHTML = exercise.iframe;
+            exerciseContainer.appendChild(iframeWrapper);
 
             // Crear formulario de opinión
             const form = document.createElement('form');
@@ -74,17 +86,16 @@ fetch('iframes.json')
             submitButton.textContent = 'Enviar Opinión';
             form.appendChild(submitButton);
 
-            // Añadir formulario al contenedor de ejercicios
             exerciseContainer.appendChild(form);
-
-            // Añadir contenedor de ejercicios al display
             exerciseDisplay.appendChild(exerciseContainer);
         });
     })
-    .catch(error => console.error('Error al cargar el archivo JSON:', error));
+    .catch(error => {
+        console.error('Error al cargar el archivo JSON:', error);
+    });
 
-// Función para manejar el envío del formulario
+// Función para enviar la opinión del profesor
 function enviarOpinion(event) {
     event.preventDefault();
-    alert('Opinión enviada. ¡Gracias por su retroalimentación!');
+    alert('Opinión enviada');
 }

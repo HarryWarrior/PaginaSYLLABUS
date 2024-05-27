@@ -24,15 +24,23 @@ h2 {
     font-size: 1.5em;
     margin: 0;
 }
-
+/* Call to action button */
+.cta-button {
+    display: inline-block;
+    background-color: #a50f15;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-transform: uppercase}
+    
 aside.menu-vertical {
     background-color: #b30000;
-    padding: 60px 0;
+    padding: 40px 0;
     position: fixed;
     width: 200px;
-    top: 30px;
+    top: 80px;
     bottom: 0;
-    left: 0;
+    left: 1100px;
     z-index: 1000;
     overflow-y: auto;
 }
@@ -60,12 +68,7 @@ aside.menu-vertical {
     background-color: #800000;
 }
 
-main {
-    margin-left: 220px; /* Espacio para el menú vertical */
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-}
+
 
 .content-wrapper {
     width: 80%;

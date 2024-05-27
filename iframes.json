@@ -10,7 +10,7 @@
         },
         {
             "titulo": "Ejercicio 3",
-            "iframe": "<iframe src='ruta_del_ejercicio3.html' frameborder='0'></iframe>"
+            "iframe": "<iframe src='https://aulasvirtuales.udistrital.edu.co/mod/hvp/embed.php?id=426092' width='1000' height='255' frameborder='0' allowfullscreen='allowfullscreen' title='Uso de Java y MySQL'></iframe>"
         }
     ],
     "programacion_orientada_a_objetos": [
