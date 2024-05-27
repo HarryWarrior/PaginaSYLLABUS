@@ -1,0 +1,46 @@
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #b30000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header img {
+    width: 100px;
+    height: auto;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+#jsonEditor {
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección del flex a columna */
+}
+
+.jsonPair {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.jsonPair label {
+    font-weight: bold;
+    flex-basis: 200px; /* Anchura fija para las etiquetas */
+    margin-right: 10px; /* Margen derecha para separar las etiquetas de los formularios */
+}
+
+.jsonPair input {
+    flex-grow: 1; /* Los formularios se expanden para ocupar el espacio restante */
+    min-width: 150px; /* Anchura mínima para los formularios */
+    margin-bottom: 10px; /* Espacio entre los formularios */
+}
+
+

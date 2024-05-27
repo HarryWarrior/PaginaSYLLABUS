@@ -1,0 +1,300 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 10px;
+    font-family: 'Georgia', serif;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333
+}
+
+/* Header styles */
+.header {
+    background-color: #a50f15;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav li {
+    list-style: none;
+}
+
+.nav a {
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav a:hover {
+    background-color: #800c0e;
+}
+
+.section {
+    padding: 60px 0;
+    background-color: #f5f5f5;
+}
+
+.bg-light {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2em;
+    color: #a50f15;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul ul {
+    margin-left: 20px;
+}
+
+/* Curriculum styles */
+#curriculum ul li {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#curriculum ul ul li {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+/* Faculty styles */
+.faculty {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.faculty-member {
+    flex: 1;
+    min-width: 250px;
+    margin: 15px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+.faculty-member img {
+    max-width: 100%;
+    border-radius: 50%;
+    border: 4px solid #a50f15;
+    margin-bottom: 20px;
+}
+
+.faculty-member h3 {
+    font-size: 1.2em;
+    color: #a50f15;
+    margin-bottom: 5px;
+}
+
+.faculty-member p {
+    color: #555;
+}
+
+/* Contact form styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: #a50f15;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #a50f15;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    color: #333;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #800c0e;
+}
+
+.contact-form button {
+    background-color: #a50f15;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #800c0e;
+}
+
+/* Call to action button */
+.cta-button {
+    display: inline-block;
+    background-color: #a50f15;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-transform: uppercase}
+    
+aside.menu-vertical {
+    background-color: #b30000;
+    padding: 60px 0;
+    position: fixed;
+    width: 200px;
+    top: 30px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.menu-vertical ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-vertical ul li {
+    margin: 0;
+}
+
+.menu-vertical ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+.menu-vertical ul li a:hover {
+    background-color: #800000;
+}
+
+
+
+.content-wrapper {
+    width: 80%;
+}
+
+.exercise-container {
+    margin-bottom: 40px;
+}
+
+iframe {
+    width: 100%;
+    height: 500px;
+    border: 2px solid #b30000;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #b30000;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+    color: #b30000;
+    margin: 0 0 20px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #b30000;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #b30000;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #b30000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #800000;
+}
