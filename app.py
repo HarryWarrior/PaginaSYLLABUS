@@ -1,14 +1,15 @@
-from flask import Flask, request, send_file,render_template, jsonify
+from flask import Flask, request, send_file,render_template, jsonify, send_from_directory
 from openpyxl import load_workbook
 from openpyxl.drawing.image import Image
 import json
 from flask_cors import CORS
 from pyexcelerate import Workbook
 from fpdf import FPDF
+from bs4 import BeautifulSoup
 import openpyxl
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app)
 
 # Definir las claves y celdas correspondientes
@@ -54,17 +55,57 @@ def get_iframes():
 @app.route('/programacion_basica')
 def programacion_basica():
     return render_template('materias/programacion_basica.html')
+
+
 @app.route('/programacion_basica/syllabus')
 def programacion_basica_syllabus():
-    return render_template('materias/programacion_basica_syllabus.html')
+ # Cargar el JSON
+    with open('static/jsonfiles/1_2_Programación_Basica.json', encoding='utf-8') as json_file:
+        datos_materia = json.load(json_file)
+
+    # Leer el formato HTML desde un archivo
+    with open('formato.html', 'r', encoding='utf-8') as file:
+        formato_html = file.read()
+
+    # Parsear el HTML
+    soup = BeautifulSoup(formato_html, 'html.parser')
+
+    # Recorrer las claves del JSON y modificar el HTML
+    for clave, valor in datos_materia.items():
+        # Buscar el elemento por ID
+        elemento_a_modificar = soup.find(id=clave)
+        # Si el elemento existe, modificar su contenido
+        if elemento_a_modificar:
+            elemento_a_modificar.string = valor
+
+    # Obtener el HTML modificado
+    formato_html_modificado = str(soup)
+
+    # Guardar el nuevo HTML
+    with open('nuevo_formato.html', 'w', encoding='utf-8') as file:
+        file.write(formato_html_modificado)
+
+    # Renderizar el HTML modificado en la respuesta
+    return render_template('mostrar_html.html', formato_html=formato_html_modificado)
+
+@app.route('/descargar_nuevo_formato')
+def descargar_nuevo_formato():
+    return send_file('nuevo_formato.html', as_attachment=True)
+
+
+
 @app.route('/programacion_basica/archivo.json')
 def get_programacion_basica_jsonfile():
     with open('static/jsonfiles/1_2_Programación_Basica.json', encoding='utf-8') as f:
         data = f.read()
     return data  
+
+
 @app.route('/syllabus')
 def syllabus():
     return render_template('Syllabus.html')
+
+
 @app.route('/generate_excel', methods=['POST'])
 def generate_excel():
     data = request.json
@@ -96,34 +137,6 @@ def generate_excel():
 
 
     return send_file(nombre_archivo_excel, as_attachment=True)
-@app.route('/generate_pdf', methods=['POST'])
-def generate_pdf():
-    data = request.json
-    json_data = json.loads(data['jsonData'])
-    json_file_name = data['jsonFileName']
-
-    # Cargar el libro de Excel
-    libro_excel = openpyxl.load_workbook('Formato.xlsx')
-    hoja_excel = libro_excel.active
-
-    # Actualizar las celdas en el archivo Excel con la información del JSON
-    for clave, celda in claves_celdas.items():
-        valor = json_data.get(clave, "")
-        hoja_excel[celda].value = valor
-
-    
-    # Guardar el libro de Excel con la información actualizada
-    nombre_archivo_excel = os.path.splitext(json_file_name)[0] + ".xlsx"
-    libro_excel.save(nombre_archivo_excel)
-    # Convertir el archivo Excel a PDF
-    pdf_filename = nombre_archivo_excel.replace('.xlsx', '.pdf')
-    os.system(f'libreoffice --headless --convert-to pdf {nombre_archivo_excel}')
-
-    
-    
-
-
-    return send_file(pdf_filename, as_attachment=True)
 
 
 if __name__ == '__main__':
