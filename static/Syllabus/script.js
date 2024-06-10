@@ -3,93 +3,6 @@ let jsonData;
 let fileName = "";
 let input;
 let  jsonString;
-document.addEventListener('DOMContentLoaded', function() {
-    let jsonData = {};
-
-    // Cargar el JSON desde una URL específica (puedes cambiar la URL según la materia)
-    fetch('/programacion_basica/archivo.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al cargar el archivo JSON');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data); // Verifica la estructura del JSON en la consola
-            jsonData = data;
-            renderJsonEditor(jsonData);
-        })
-        .catch(error => {
-            console.error('Error al cargar el archivo JSON:', error);
-        });
-
-    function renderJsonEditor(data) {
-        const jsonEditorTbody = document.getElementById('jsonEditorDiv');
-        jsonEditorTbody.innerHTML = ''; // Limpiar cualquier contenido previo
-
-        for (let key in data) {
-            if (data.hasOwnProperty(key)) {
-                // Crear la fila para cada par clave-valor
-                let row = document.createElement('tr');
-                
-                // Crear la celda para la clave
-                let cellKey = document.createElement('td');
-                cellKey.textContent = key.charAt(0).toUpperCase() + key.slice(1);
-                row.appendChild(cellKey);
-
-                // Crear la celda para el valor
-                let cellValue = document.createElement('td');
-                
-                let input;
-                if (data[key].length > 50 || data[key].includes('\n')) {
-                    // Usar <textarea> para texto largo o que contiene saltos de línea
-                    input = document.createElement('textarea');
-                } else {
-                    // Usar <input> para texto corto
-                    input = document.createElement('input');
-                    input.type = 'text';
-                }
-                
-                input.value = data[key];
-                input.setAttribute('data-key', key); // Añadir un atributo de datos para almacenar la clave asociada
-                input.style.width = '100%';
-                input.style.height = 'auto';
-                
-                // Ajustar el tamaño del input/textarea según el texto
-                input.style.height = `${Math.max(20, input.scrollHeight)}px`;
-                input.addEventListener('input', function() {
-                    this.style.height = 'auto';
-                    this.style.height = `${this.scrollHeight}px`;
-                });
-                
-                cellValue.appendChild(input);
-                row.appendChild(cellValue);
-
-                // Añadir la fila a la tabla
-                jsonEditorTbody.appendChild(row);
-            }
-        }
-    }
-
-    function saveData() {
-        // Recopilar datos del formulario
-        const inputs = document.querySelectorAll('#jsonEditor input[type="text"], #jsonEditor textarea');
-        let updatedData = {};
-        inputs.forEach(input => {
-            const key = input.getAttribute('data-key');
-            updatedData[key] = input.value;
-        });
-
-        // Guardar los datos (puedes ajustar esto para enviar los datos a tu servidor)
-        console.log('Datos actualizados:', updatedData);
-        // Aquí podrías usar fetch para enviar los datos a tu servidor:
-        // fetch('/save', { method: 'POST', body: JSON.stringify(updatedData), headers: { 'Content-Type': 'application/json' } });
-    }
-});
-
-
-
-
 
 function handleFile() {
     const fileInput = document.getElementById('fileInput');
@@ -132,13 +45,9 @@ function handleFile() {
     }
 }
 
-
-// Supongamos que ya has cargado el JSON y está almacenado en una variable llamada "data"
-
-// Función que se activa después de cargar el JSON
 function modificarJSON() {
     // Obtener todos los formularios de entrada
-    const inputs = document.querySelectorAll('#jsonEditor input');
+    const inputs = document.querySelectorAll('#jsonEditor textarea');
     
     // Objeto para almacenar los nuevos valores del JSON
     let newData = {};
@@ -194,6 +103,8 @@ document.getElementById('process').addEventListener('click', () => {
             localStorage.setItem('jsonFileName', file.name);
         };
         reader.readAsText(file);
+    }else{
+        console.log("NO HAY ARCHIVO")
     }
 });
 
