@@ -29,8 +29,8 @@ ul {
 }
 
 a {
-    text-decoration: none;
-    color: #333
+    text-decoration: dotted;
+    color: blue;
 }
 
 /* Header styles */
